@@ -1,0 +1,1280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebCraft Studio - Professional Website Development Services</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #fff;
+            overflow-x: hidden;
+        }
+
+        /* Header & Navigation */
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-menu a:hover {
+            color: #667eea;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        .cta-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+            display: flex;
+            align-items: center;
+            padding: 120px 5% 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="%23667eea" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="%23764ba2" opacity="0.1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grain)"/></svg>');
+            animation: float 20s infinite linear;
+            pointer-events: none;
+        }
+
+        @keyframes float {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        .hero-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-text h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #2c3e50 0%, #667eea 50%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.1;
+        }
+
+        .hero-text p {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-secondary {
+            background: rgba(102, 126, 234, 0.1);
+            color: #667eea;
+            border: 2px solid rgba(102, 126, 234, 0.3);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(102, 126, 234, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .hero-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            transform: perspective(1000px) rotateY(-15deg);
+            transition: all 0.3s ease;
+            max-width: 400px;
+        }
+
+        .hero-card:hover {
+            transform: perspective(1000px) rotateY(0deg);
+        }
+
+        /* Services Section */
+        .services {
+            padding: 100px 5%;
+            background: white;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+
+        .service-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+
+        .service-description {
+            color: #666;
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .service-features {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-features li {
+            padding: 0.5rem 0;
+            color: #555;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .service-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #27ae60;
+            font-weight: bold;
+        }
+
+        .service-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+
+        /* Portfolio Section */
+        .portfolio {
+            padding: 100px 5%;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .portfolio-item {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .portfolio-image {
+            height: 200px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+            position: relative;
+        }
+
+        .portfolio-content {
+            padding: 1.5rem;
+        }
+
+        .portfolio-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .portfolio-description {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .portfolio-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .tag {
+            background: rgba(102, 126, 234, 0.1);
+            color: #667eea;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        /* Process Section */
+        .process {
+            padding: 100px 5%;
+            background: white;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .process-step {
+            text-align: center;
+            position: relative;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0 auto 1.5rem;
+        }
+
+        .step-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+
+        .step-description {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            padding: 100px 5%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .testimonial {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .testimonial-text {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .testimonial-company {
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 100px 5%;
+            background: white;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .contact-form {
+            background: rgba(102, 126, 234, 0.05);
+            padding: 2.5rem;
+            border-radius: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #2c3e50;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid rgba(102, 126, 234, 0.2);
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: white;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .contact-info h3 {
+            font-size: 1.5rem;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: rgba(102, 126, 234, 0.05);
+            border-radius: 10px;
+        }
+
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            margin-right: 1rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: #2c3e50;
+            color: white;
+            padding: 50px 5% 30px;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: #667eea;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: #bbb;
+            text-decoration: none;
+            line-height: 1.6;
+        }
+
+        .footer-section a:hover {
+            color: #667eea;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #444;
+            padding-top: 2rem;
+            color: #999;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                text-align: center;
+            }
+            
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+            
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .nav {
+                padding: 1rem 5%;
+            }
+            
+            .services-grid,
+            .portfolio-grid,
+            .process-steps,
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Loading Animation */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="logo">WebCraft Studio</div>
+            <ul class="nav-menu">
+                <li><a href="#home" onclick="scrollToSection('hero')">Home</a></li>
+                <li><a href="#services" onclick="scrollToSection('services')">Services</a></li>
+                <li><a href="#portfolio" onclick="scrollToSection('portfolio')">Portfolio</a></li>
+                <li><a href="#process" onclick="scrollToSection('process')">Process</a></li>
+                <li><a href="#contact" onclick="scrollToSection('contact')">Contact</a></li>
+            </ul>
+            <a href="#contact" class="cta-btn" onclick="scrollToSection('contact')">Get Quote</a>
+            <button class="mobile-menu-btn">☰</button>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Crafting Digital Experiences That Drive Results</h1>
+                <p>We build stunning, high-performance websites that convert visitors into customers. From concept to launch, we deliver web solutions that grow your business.</p>
+                <div class="hero-buttons">
+                    <a href="#portfolio" class="btn btn-primary" onclick="scrollToSection('portfolio')">View Our Work</a>
+                    <a href="#services" class="btn btn-secondary" onclick="scrollToSection('services')">Our Services</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="hero-card">
+                    <h3 style="color: #2c3e50; margin-bottom: 1rem;">Modern Web Development</h3>
+                    <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); height: 100px; border-radius: 10px; margin-bottom: 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem;">🚀</div>
+                    <p style="color: #666; font-size: 0.9rem;">Responsive • Fast • SEO-Optimized</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Our Development Services</h2>
+                <p class="section-subtitle">From simple landing pages to complex web applications, we deliver solutions tailored to your business needs</p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🎨</div>
+                    <h3 class="service-title">Custom Website Design</h3>
+                    <p class="service-description">Unique, brand-focused designs that capture your vision and engage your audience across all devices.</p>
+                    <ul class="service-features">
+                        <li>Mobile-responsive design</li>
+                        <li>Custom UI/UX design</li>
+                        <li>Brand integration</li>
+                        <li>User experience optimization</li>
+                    </ul>
+                    <div class="service-price">Starting at $2,500</div>
+                    <button class="btn btn-primary" onclick="openQuoteModal('Custom Website Design')">Get Quote</button>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">🛒</div>
+                    <h3 class="service-title">E-commerce Development</h3>
+                    <p class="service-description">Full-featured online stores with secure payment processing and inventory management.</p>
+                    <ul class="service-features">
+                        <li>Shopping cart & checkout</li>
+                        <li>Payment gateway integration</li>
+                        <li>Inventory management</li>
+                        <li>Order tracking system</li>
+                    </ul>
+                    <div class="service-price">Starting at $5,000</div>
+                    <button class="btn btn-primary" onclick="openQuoteModal('E-commerce Development')">Get Quote</button>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">📱</div>
+                    <h3 class="service-title">Web Application Development</h3>
+                    <p class="service-description">Custom web applications built with modern technologies for complex business requirements.</p>
+                    <ul class="service-features">
+                        <li>Database integration</li>
+                        <li>User authentication</li>
+                        <li>API development</li>
+                        <li>Cloud deployment</li>
+                    </ul>
+                    <div class="service-price">Starting at $7,500</div>
+                    <button class="btn btn-primary" onclick="openQuoteModal('Web Application Development')">Get Quote</button>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">🚀</div>
+                    <h3 class="service-title">Performance Optimization</h3>
+                    <p class="service-description">Speed up your existing website with our comprehensive optimization services.</p>
+                    <ul class="service-features">
+                        <li>Speed optimization</li>
+                        <li>SEO improvements</li>
+                        <li>Core Web Vitals</li>
+                        <li>Performance monitoring</li>
+                    </ul>
+                    <div class="service-price">Starting at $1,500</div>
+                    <button class="btn btn-primary" onclick="openQuoteModal('Performance Optimization')">Get Quote</button>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">🛠️</div>
+                    <h3 class="service-title">Website Maintenance</h3>
+                    <p class="service-description">Keep your website running smoothly with our ongoing maintenance and support services.</p>
+                    <ul class="service-features">
+                        <li>Regular updates</li>
+                        <li>Security monitoring</li>
+                        <li>Backup management</li>
+                        <li>Technical support</li>
+                    </ul>
+                    <div class="service-price">$200/month</div>
+                    <button class="btn btn-primary" onclick="openQuoteModal('Website Maintenance')">Get Quote</button>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">📊</div>
+                    <h3 class="service-title">Analytics & SEO</h3>
+                    <p class="service-description">Improve your search rankings and track your website's performance with advanced analytics.</p>
+                    <ul class="service-features">
+                        <li>SEO optimization</li>
+                        <li>Google Analytics setup</li>
+                        <li>Conversion tracking</li>
+                        <li>Performance reports</li>
+                    </ul>
+                    <div class="service-price">Starting at $800</div>
+                    <button class="btn btn-primary" onclick="openQuoteModal('Analytics & SEO')">Get Quote</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="portfolio" id="portfolio">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Our Recent Work</h2>
+                <p class="section-subtitle">Discover how we've helped businesses transform their digital presence</p>
+            </div>
+            
+            <div class="portfolio-grid">
+                <div class="portfolio-item" onclick="showPortfolioDetails('TechStart Solutions')">
+                    <div class="portfolio-image">💼</div>
+                    <div class="portfolio-content">
+                        <h3 class="portfolio-title">TechStart Solutions</h3>
+                        <p class="portfolio-description">Modern corporate website with integrated CRM and lead generation system.</p>
+                        <div class="portfolio-tags">
+                            <span class="tag">React</span>
+                            <span class="tag">Node.js</span>
+                            <span class="tag">CRM</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item" onclick="showPortfolioDetails('Urban Fashion Store')">
+                    <div class="portfolio-image">👕</div>
+                    <div class="portfolio-content">
+                        <h3 class="portfolio-title">Urban Fashion Store</h3>
+                        <p class="portfolio-description">E-commerce platform with custom product configurator and social integration.</p>
+                        <div class="portfolio-tags">
+                            <span class="tag">WooCommerce</span>
+                            <span class="tag">PHP</span>
+                            <span class="tag">E-commerce</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item" onclick="showPortfolioDetails('GreenEats Restaurant')">
+                    <div class="portfolio-image">🍽️</div>
+                    <div class="portfolio-content">
+                        <h3 class="portfolio-title">GreenEats Restaurant</h3>
+                        <p class="portfolio-description">Restaurant website with online ordering system and reservation management.</p>
+                        <div class="portfolio-tags">
+                            <span class="tag">WordPress</span>
+                            <span class="tag">Booking</span>
+                            <span class="tag">Responsive</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item" onclick="showPortfolioDetails('FitLife Gym')">
+                    <div class="portfolio-image">💪</div>
+                    <div class="portfolio-content">
+                        <h3 class="portfolio-title">FitLife Gym</h3>
+                        <p class="portfolio-description">Fitness center website with class scheduling and membership management.</p>
+                        <div class="portfolio-tags">
+                            <span class="tag">Vue.js</span>
+                            <span class="tag">Scheduling</span>
+                            <span class="tag">Payment</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item" onclick="showPortfolioDetails('EduLearn Platform')">
+                    <div class="portfolio-image">📚</div>
+                    <div class="portfolio-content">
+                        <h3 class="portfolio-title">EduLearn Platform</h3>
+                        <p class="portfolio-description">Online learning platform with course management and student progress tracking.</p>
+                        <div class="portfolio-tags">
+                            <span class="tag">Laravel</span>
+                            <span class="tag">LMS</span>
+                            <span class="tag">Dashboard</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item" onclick="showPortfolioDetails('PropertyPro Real Estate')">
+                    <div class="portfolio-image">🏠</div>
+                    <div class="portfolio-content">
+                        <h3 class="portfolio-title">PropertyPro Real Estate</h3>
+                        <p class="portfolio-description">Real estate platform with advanced property search and virtual tours.</p>
+                        <div class="portfolio-tags">
+                            <span class="tag">React</span>
+                            <span class="tag">Maps API</span>
+                            <span class="tag">Search</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process" id="process">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Our Development Process</h2>
+                <p class="section-subtitle">A proven methodology that ensures your project is delivered on time and exceeds expectations</p>
+            </div>
+            
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <h3 class="step-title">Discovery & Planning</h3>
+                    <p class="step-description">We start by understanding your business goals, target audience, and project requirements through detailed consultations and research.</p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <h3 class="step-title">Design & Wireframing</h3>
+                    <p class="step-description">Our design team creates wireframes and mockups that visualize your website's structure, layout, and user experience.</p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <h3 class="step-title">Development & Testing</h3>
+                    <p class="step-description">We build your website using modern technologies, ensuring it's responsive, fast, and thoroughly tested across all devices and browsers.</p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <h3 class="step-title">Launch & Support</h3>
+                    <p class="step-description">After final approval, we launch your website and provide ongoing support, maintenance, and optimization to ensure continued success.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title" style="color: white;">What Our Clients Say</h2>
+                <p class="section-subtitle" style="color: rgba(255,255,255,0.9);">Don't just take our word for it - hear from businesses we've helped grow</p>
+            </div>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial">
+                    <p class="testimonial-text">"WebCraft Studio transformed our online presence completely. Our new website not only looks amazing but has increased our conversion rate by 40%."</p>
+                    <div class="testimonial-author">Sarah Johnson</div>
+                    <div class="testimonial-company">CEO, TechStart Solutions</div>
+                </div>
+                
+                <div class="testimonial">
+                    <p class="testimonial-text">"The team's attention to detail and technical expertise is outstanding. They delivered our e-commerce platform on time and within budget."</p>
+                    <div class="testimonial-author">Mike Chen</div>
+                    <div class="testimonial-company">Founder, Urban Fashion Store</div>
+                </div>
+                
+                <div class="testimonial">
+                    <p class="testimonial-text">"Professional, responsive, and creative. They understood our vision and brought it to life better than we ever imagined."</p>
+                    <div class="testimonial-author">Emma Rodriguez</div>
+                    <div class="testimonial-company">Owner, GreenEats Restaurant</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Ready to Start Your Project?</h2>
+                <p class="section-subtitle">Let's discuss how we can help bring your digital vision to life</p>
+            </div>
+            
+            <div class="contact-content">
+                <div class="contact-form">
+                    <h3 style="color: #2c3e50; margin-bottom: 1.5rem;">Get Your Free Quote</h3>
+                    <form id="quoteForm">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="service">Service Needed</label>
+                            <select id="service" name="service" required>
+                                <option value="">Select a service</option>
+                                <option value="custom-design">Custom Website Design</option>
+                                <option value="ecommerce">E-commerce Development</option>
+                                <option value="web-app">Web Application Development</option>
+                                <option value="optimization">Performance Optimization</option>
+                                <option value="maintenance">Website Maintenance</option>
+                                <option value="seo">Analytics & SEO</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="budget">Project Budget</label>
+                            <select id="budget" name="budget">
+                                <option value="">Select budget range</option>
+                                <option value="under-2500">Under $2,500</option>
+                                <option value="2500-5000">$2,500 - $5,000</option>
+                                <option value="5000-10000">$5,000 - $10,000</option>
+                                <option value="10000-25000">$10,000 - $25,000</option>
+                                <option value="over-25000">Over $25,000</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="timeline">Project Timeline</label>
+                            <select id="timeline" name="timeline">
+                                <option value="">Select timeline</option>
+                                <option value="asap">ASAP</option>
+                                <option value="1-month">Within 1 month</option>
+                                <option value="2-3-months">2-3 months</option>
+                                <option value="3-6-months">3-6 months</option>
+                                <option value="flexible">Flexible</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Project Details</label>
+                            <textarea id="message" name="message" rows="4" placeholder="Tell us about your project requirements, goals, and any specific features you need..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">
+                            Send Quote Request
+                        </button>
+                    </form>
+                </div>
+                
+                <div class="contact-info">
+                    <h3>Get In Touch</h3>
+                    <p style="color: #666; margin-bottom: 2rem;">Ready to discuss your project? We're here to help turn your ideas into reality.</p>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">📧</div>
+                        <div>
+                            <div style="font-weight: 600; color: #2c3e50;">Email Us</div>
+                            <div style="color: #666;">hello@webcraft-studio.com</div>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">📞</div>
+                        <div>
+                            <div style="font-weight: 600; color: #2c3e50;">Call Us</div>
+                            <div style="color: #666;">+1 (555) 123-4567</div>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">🕒</div>
+                        <div>
+                            <div style="font-weight: 600; color: #2c3e50;">Business Hours</div>
+                            <div style="color: #666;">Mon-Fri: 9AM-6PM EST</div>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div>
+                            <div style="font-weight: 600; color: #2c3e50;">Location</div>
+                            <div style="color: #666;">New York, NY, USA</div>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-top: 2rem;">
+                        <h4 style="color: #2c3e50; margin-bottom: 1rem;">Why Choose WebCraft Studio?</h4>
+                        <ul style="list-style: none; color: #666;">
+                            <li style="padding: 0.5rem 0; position: relative; padding-left: 1.5rem;">
+                                <span style="position: absolute; left: 0; color: #27ae60; font-weight: bold;">✓</span>
+                                5+ years of experience
+                            </li>
+                            <li style="padding: 0.5rem 0; position: relative; padding-left: 1.5rem;">
+                                <span style="position: absolute; left: 0; color: #27ae60; font-weight: bold;">✓</span>
+                                100+ successful projects
+                            </li>
+                            <li style="padding: 0.5rem 0; position: relative; padding-left: 1.5rem;">
+                                <span style="position: absolute; left: 0; color: #27ae60; font-weight: bold;">✓</span>
+                                Money-back guarantee
+                            </li>
+                            <li style="padding: 0.5rem 0; position: relative; padding-left: 1.5rem;">
+                                <span style="position: absolute; left: 0; color: #27ae60; font-weight: bold;">✓</span>
+                                Free post-launch support
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>WebCraft Studio</h3>
+                <p>We craft digital experiences that drive results. From concept to launch, we're your trusted partner in web development.</p>
+                <div style="margin-top: 1rem;">
+                    <a href="#" style="color: #667eea; margin-right: 1rem; font-size: 1.5rem; text-decoration: none;">📘</a>
+                    <a href="#" style="color: #667eea; margin-right: 1rem; font-size: 1.5rem; text-decoration: none;">🐦</a>
+                    <a href="#" style="color: #667eea; margin-right: 1rem; font-size: 1.5rem; text-decoration: none;">💼</a>
+                    <a href="#" style="color: #667eea; margin-right: 1rem; font-size: 1.5rem; text-decoration: none;">📸</a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Services</h3>
+                <p><a href="#services" onclick="scrollToSection('services')">Custom Website Design</a></p>
+                <p><a href="#services" onclick="scrollToSection('services')">E-commerce Development</a></p>
+                <p><a href="#services" onclick="scrollToSection('services')">Web Applications</a></p>
+                <p><a href="#services" onclick="scrollToSection('services')">Performance Optimization</a></p>
+                <p><a href="#services" onclick="scrollToSection('services')">Website Maintenance</a></p>
+                <p><a href="#services" onclick="scrollToSection('services')">SEO & Analytics</a></p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Company</h3>
+                <p><a href="#hero" onclick="scrollToSection('hero')">About Us</a></p>
+                <p><a href="#portfolio" onclick="scrollToSection('portfolio')">Our Work</a></p>
+                <p><a href="#process" onclick="scrollToSection('process')">Our Process</a></p>
+                <p><a href="#testimonials" onclick="scrollToSection('testimonials')">Testimonials</a></p>
+                <p><a href="#contact" onclick="scrollToSection('contact')">Contact Us</a></p>
+                <p><a href="#" onclick="showCareersModal()">Careers</a></p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Resources</h3>
+                <p><a href="#" onclick="showBlogModal()">Blog</a></p>
+                <p><a href="#" onclick="showResourcesModal()">Free Resources</a></p>
+                <p><a href="#" onclick="showWebinarsModal()">Webinars</a></p>
+                <p><a href="#" onclick="showCaseStudiesModal()">Case Studies</a></p>
+                <p><a href="#" onclick="showSupportModal()">Support Center</a></p>
+                <p><a href="#" onclick="showPrivacyModal()">Privacy Policy</a></p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Get Started</h3>
+                <p>Ready to transform your digital presence?</p>
+                <a href="#contact" class="btn btn-primary" onclick="scrollToSection('contact')" style="margin-top: 1rem; display: inline-block;">Get Free Quote</a>
+                <div style="margin-top: 1rem;">
+                    <p style="font-size: 0.9rem;"><strong>📧 Email:</strong> hello@webcraft-studio.com</p>
+                    <p style="font-size: 0.9rem;"><strong>📞 Phone:</strong> +1 (555) 123-4567</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2024 WebCraft Studio. All rights reserved. | Designed with ❤️ for ambitious businesses.</p>
+            <p style="font-size: 0.9rem; margin-top: 0.5rem; opacity: 0.8;">
+                <a href="#" onclick="showTermsModal()" style="color: #667eea; margin-right: 1rem;">Terms of Service</a>
+                <a href="#" onclick="showPrivacyModal()" style="color: #667eea; margin-right: 1rem;">Privacy Policy</a>
+                <a href="#" onclick="showCookiesModal()" style="color: #667eea;">Cookie Policy</a>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling
+        function scrollToSection(sectionId) {
+            const element = document.getElementById(sectionId);
+            if (element) {
+                element.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        }
+
+        // Form submission
+        document.getElementById('quoteForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const btn = e.target.querySelector('button[type="submit"]');
+            const originalText = btn.innerHTML;
+            
+            btn.innerHTML = '<span class="loading"></span> Sending...';
+            btn.disabled = true;
+            
+            // Simulate form submission
+            setTimeout(() => {
+                alert('Thank you for your quote request! We\'ll get back to you within 24 hours.');
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+                e.target.reset();
+            }, 2000);
+        });
+
+        // Quote modal functions
+        function openQuoteModal(service) {
+            document.getElementById('service').value = service.toLowerCase().replace(/\s+/g, '-').replace('&', '');
+            scrollToSection('contact');
+        }
+
+        // Portfolio details
+        function showPortfolioDetails(projectName) {
+            alert(`Project: ${projectName}\n\nClick to view full case study with detailed information about the project scope, challenges, solutions, and results achieved.`);
+        }
+
+        // Modal functions for footer links
+        function showCareersModal() {
+            alert('Careers Page\n\nJoin our growing team! We\'re always looking for talented developers, designers, and project managers. Email your resume to careers@webcraft-studio.com');
+        }
+
+        function showBlogModal() {
+            alert('Blog & Resources\n\nStay updated with the latest web development trends, tips, and insights. Visit our blog for regular updates on technology and best practices.');
+        }
+
+        function showResourcesModal() {
+            alert('Free Resources\n\n• Website Planning Checklist\n• SEO Optimization Guide\n• Performance Optimization Tips\n• UI/UX Design Principles\n\nContact us to access these free resources!');
+        }
+
+        function showWebinarsModal() {
+            alert('Upcoming Webinars\n\n• "Modern Web Development Trends 2024"\n• "E-commerce Optimization Strategies"\n• "Website Performance Best Practices"\n\nRegister for free at our events page.');
+        }
+
+        function showCaseStudiesModal() {
+            alert('Case Studies\n\nDetailed case studies showing how we\'ve helped businesses:\n• Increase conversions by 200%\n• Improve page load times by 70%\n• Boost search rankings\n\nView full case studies on our portfolio page.');
+        }
+
+        function showSupportModal() {
+            alert('Support Center\n\n• 24/7 Technical Support\n• Video Tutorials\n• Documentation\n• Community Forum\n\nEmail: support@webcraft-studio.com\nPhone: +1 (555) 123-4567');
+        }
+
+        function showPrivacyModal() {
+            alert('Privacy Policy\n\nWe respect your privacy and protect your personal information. We never share your data with third parties without consent. Full privacy policy available on request.');
+        }
+
+        function showTermsModal() {
+            alert('Terms of Service\n\nOur terms of service outline the agreement between WebCraft Studio and our clients. All projects include clear deliverables, timelines, and payment terms.');
+        }
+
+        function showCookiesModal() {
+            alert('Cookie Policy\n\nWe use cookies to improve your browsing experience and analyze website traffic. You can manage cookie preferences in your browser settings.');
+        }
+
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.98)';
+                header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+                header.style.boxShadow = 'none';
+            }
+        });
+
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all service cards and portfolio items
+        document.addEventListener('DOMContentLoaded', function() {
+            const elements = document.querySelectorAll('.service-card, .portfolio-item, .process-step, .testimonial');
+            elements.forEach(el => {
+                el.classList.add('fade-in');
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>
